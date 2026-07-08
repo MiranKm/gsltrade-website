@@ -1,0 +1,276 @@
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: calc(var(--header-h) + clamp(56px, 12vw, 128px)) 0 clamp(120px, 20vw, 220px);
+  color: var(--on-dark);
+}
+
+/* dawn sky: night at top, warm glow rising from the horizon */
+.sky {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  background:
+    radial-gradient(120% 85% at 50% 118%, rgba(255, 122, 60, 0.55), transparent 58%),
+    radial-gradient(90% 70% at 50% 128%, rgba(255, 200, 90, 0.5), transparent 52%),
+    linear-gradient(180deg, #060814 0%, #0a0e22 42%, #141c45 100%);
+}
+
+/* faint pre-dawn stars */
+.stars {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image:
+    radial-gradient(1.4px 1.4px at 12% 22%, rgba(255, 255, 255, 0.55), transparent),
+    radial-gradient(1.2px 1.2px at 78% 16%, rgba(255, 255, 255, 0.45), transparent),
+    radial-gradient(1px 1px at 34% 34%, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(1.3px 1.3px at 62% 28%, rgba(255, 255, 255, 0.4), transparent),
+    radial-gradient(1px 1px at 88% 40%, rgba(255, 255, 255, 0.35), transparent),
+    radial-gradient(1px 1px at 22% 12%, rgba(255, 255, 255, 0.4), transparent);
+  mask-image: linear-gradient(180deg, #000 0%, transparent 62%);
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 62%);
+}
+
+/* ---- the generation arc ---- */
+.arcWrap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: clamp(220px, 32vw, 340px);
+  z-index: -1;
+}
+
+.arc {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 0 22px rgba(255, 176, 32, 0.45));
+}
+
+.arcLine {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw 2.6s cubic-bezier(0.4, 0, 0.1, 1) 0.35s forwards;
+}
+
+.arcFill {
+  opacity: 0;
+  animation: fade 1.6s ease 1.9s forwards;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes fade {
+  to {
+    opacity: 1;
+  }
+}
+
+/* sun sitting at the arc peak (~50% width, matching path apex) */
+.sun {
+  position: absolute;
+  left: 50%;
+  top: calc(84 / 340 * 100%);
+  width: 26px;
+  height: 26px;
+  margin: -13px 0 0 -13px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 38%, #fff4d6, var(--gold) 55%, var(--amber));
+  box-shadow: 0 0 0 8px rgba(255, 176, 32, 0.14), 0 0 40px 8px rgba(255, 176, 32, 0.55);
+  opacity: 0;
+  animation: rise 1s ease 2.4s forwards, pulse 5s ease-in-out 3.4s infinite;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 8px rgba(255, 176, 32, 0.14), 0 0 40px 8px rgba(255, 176, 32, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(255, 176, 32, 0.08), 0 0 56px 12px rgba(255, 176, 32, 0.7);
+  }
+}
+
+/* ---- content ---- */
+.inner {
+  position: relative;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.eyebrow {
+  color: var(--gold-2);
+  margin-bottom: 22px;
+  animation: up 0.7s ease 0.05s both;
+}
+
+.title {
+  font-size: clamp(2.2rem, 6.4vw, 4.6rem);
+  font-weight: 800;
+  color: #fff;
+  max-width: 16ch;
+  animation: up 0.8s ease 0.12s both;
+}
+
+.titleAccent {
+  background: linear-gradient(100deg, var(--gold-2) 10%, var(--amber) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.lede {
+  margin-top: 24px;
+  max-width: 56ch;
+  font-size: clamp(1.05rem, 1.7vw, 1.24rem);
+  color: var(--on-dark-muted);
+  animation: up 0.8s ease 0.22s both;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: center;
+  margin-top: 38px;
+  animation: up 0.8s ease 0.32s both;
+}
+
+.primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 15px 26px;
+  border-radius: 999px;
+  font-weight: 600;
+  color: var(--night);
+  background: linear-gradient(180deg, var(--gold-2), var(--gold));
+  box-shadow: var(--shadow-gold);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+}
+
+.primary:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.04);
+  box-shadow: 0 22px 54px -16px rgba(255, 176, 32, 0.7);
+}
+
+.primary svg {
+  transition: transform 0.18s ease;
+}
+
+.primary:hover svg {
+  transform: translateX(3px);
+}
+
+:global(:root[dir="rtl"]) .primary svg {
+  transform: scaleX(-1);
+}
+
+:global(:root[dir="rtl"]) .primary:hover svg {
+  transform: scaleX(-1) translateX(3px);
+}
+
+.secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 15px 26px;
+  border-radius: 999px;
+  font-weight: 600;
+  color: var(--on-dark);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--line-dark);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.28);
+}
+
+.ticker {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 4vw, 40px);
+  margin-top: 56px;
+  padding: 18px 26px;
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line-dark);
+  backdrop-filter: blur(6px);
+  animation: up 0.8s ease 0.44s both;
+}
+
+.stat {
+  text-align: center;
+  padding-inline: clamp(8px, 2vw, 20px);
+}
+
+.stat + .stat {
+  border-inline-start: 1px solid var(--line-dark);
+}
+
+.stat dt {
+  font-family: var(--ff-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--on-dark-muted);
+  margin-bottom: 4px;
+}
+
+.stat dd {
+  font-family: var(--ff-display);
+  font-weight: 700;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  color: #fff;
+}
+
+:global(:root[dir="rtl"]) .stat dt {
+  letter-spacing: normal;
+}
+
+@keyframes up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .ticker {
+    gap: 12px;
+    padding: 16px;
+  }
+  .primary,
+  .secondary {
+    width: 100%;
+    justify-content: center;
+  }
+}

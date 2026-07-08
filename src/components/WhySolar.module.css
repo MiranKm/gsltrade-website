@@ -1,0 +1,73 @@
+.why {
+  background: var(--paper-2);
+  padding: clamp(72px, 12vw, 130px) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.head {
+  max-width: 640px;
+  margin-bottom: clamp(40px, 6vw, 60px);
+}
+
+.eyebrow {
+  color: var(--amber);
+  margin-bottom: 16px;
+}
+
+.heading {
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  margin-bottom: 18px;
+}
+
+.sub {
+  color: var(--muted);
+  font-size: 1.08rem;
+}
+
+.grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.card {
+  padding: 28px 26px 30px;
+  border-radius: var(--radius-lg);
+  background: var(--paper);
+  border: 1px solid var(--line);
+}
+
+.iconWrap {
+  display: inline-grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 14px;
+  color: var(--night);
+  background: linear-gradient(180deg, var(--gold-2), var(--gold));
+  box-shadow: 0 10px 22px -12px rgba(255, 176, 32, 0.9);
+  margin-bottom: 20px;
+}
+
+.cardTitle {
+  font-size: 1.18rem;
+  margin-bottom: 10px;
+}
+
+.cardBody {
+  color: var(--muted);
+  font-size: 0.96rem;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

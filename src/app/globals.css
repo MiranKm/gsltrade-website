@@ -1,40 +1,86 @@
+/* =========================================================
+   Golden Sunline Trade — design tokens & base
+   Direction: "The Golden Line" — dawn indigo + solar gold.
+   ========================================================= */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* --- palette --- */
+  --night: #080b1a;          /* pre-dawn sky, darkest sections */
+  --night-2: #0b1024;        /* hero base */
+  --dusk: #141c45;           /* gradient mid / dark cards */
+  --indigo: #1d2a63;         /* raised surfaces on dark */
+  --gold: #ffb020;           /* primary accent — the golden line */
+  --gold-2: #ffcc55;         /* lighter gold for gradients */
+  --amber: #ff7a3c;          /* sunrise warmth */
+  --glow: #ffe7a6;           /* pale highlight */
+
+  --paper: #ffffff;          /* primary light surface */
+  --paper-2: #f4f6fb;        /* subtle cool section (never cream) */
+  --ink: #0b1020;            /* text on light */
+  --ink-2: #2a3145;          /* body text on light */
+  --muted: #5b6579;          /* secondary text on light */
+  --line: #e7eaf2;           /* hairline on light */
+
+  --on-dark: #eef1fb;        /* text on dark */
+  --on-dark-muted: rgba(233, 238, 255, 0.64);
+  --line-dark: rgba(255, 255, 255, 0.12);
+
+  /* --- type stacks (next/font vars set on <html>) --- */
+  --ff-display: var(--font-display), "Segoe UI", system-ui, sans-serif;
+  --ff-body: var(--font-body), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ff-mono: var(--font-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  /* --- scale --- */
+  --maxw: 1180px;
+  --radius: 14px;
+  --radius-lg: 24px;
+  --shadow: 0 24px 60px -28px rgba(11, 16, 32, 0.35);
+  --shadow-gold: 0 18px 50px -18px rgba(255, 176, 32, 0.45);
+  --header-h: 72px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-html {
-  height: 100%;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 * {
-  box-sizing: border-box;
-  padding: 0;
   margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--ff-body);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--ink-2);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--ff-display);
+  color: var(--ink);
+  line-height: 1.06;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
 }
 
 a {
@@ -42,8 +88,87 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+/* section anchors clear the fixed header */
+section[id] {
+  scroll-margin-top: calc(var(--header-h) + 16px);
+}
+
+/* shared container */
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: clamp(20px, 5vw, 40px);
+}
+
+/* mono eyebrow label used across sections */
+.eyebrow {
+  font-family: var(--ff-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--night);
+}
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
   html {
-    color-scheme: dark;
+    scroll-behavior: auto;
   }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ===== Right-to-left (Kurdish / Arabic) ===== */
+:root[dir="rtl"] {
+  /* Arabic-script faces cover both Kurdish (Sorani) and Arabic. */
+  --ff-display: var(--font-ar-display), var(--font-ar-body), "Segoe UI", sans-serif;
+  --ff-body: var(--font-ar-body), var(--font-ar-display), "Segoe UI", sans-serif;
+  --ff-mono: var(--font-ar-body), var(--font-mono), monospace;
+}
+
+/* Arabic script must never be letter-spaced (it breaks the joins) and has
+   no case, so uppercase/tracking are dropped in RTL. */
+:root[dir="rtl"] :is(h1, h2, h3, h4) {
+  letter-spacing: normal;
+}
+
+:root[dir="rtl"] .eyebrow {
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+/* Directional arrows point the other way in RTL. */
+:root[dir="rtl"] .flip-rtl {
+  transform: scaleX(-1);
 }

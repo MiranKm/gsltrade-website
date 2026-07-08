@@ -1,0 +1,45 @@
+.switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--line-dark);
+}
+
+.opt {
+  padding: 6px 11px;
+  border: none;
+  background: transparent;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--on-dark-muted);
+  transition: color 0.18s ease, background 0.18s ease;
+}
+
+.opt:hover {
+  color: var(--on-dark);
+}
+
+.active {
+  color: var(--night);
+  background: linear-gradient(180deg, var(--gold-2), var(--gold));
+}
+
+/* block variant — used inside the mobile menu */
+.block {
+  display: flex;
+  width: 100%;
+  justify-content: stretch;
+}
+
+.block .opt {
+  flex: 1;
+  padding: 12px 0;
+  text-align: center;
+  font-size: 0.95rem;
+}
