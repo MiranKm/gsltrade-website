@@ -165,6 +165,8 @@
 }
 
 .submit {
+  position: relative;
+  overflow: hidden;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -179,6 +181,24 @@
   background: linear-gradient(180deg, var(--gold-2), var(--gold));
   box-shadow: var(--shadow-gold);
   transition: transform 0.18s ease, filter 0.18s ease;
+}
+
+.submit::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    110deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.6) 50%,
+    transparent 70%
+  );
+  transform: translateX(-130%);
+  transition: transform 0.65s ease;
+}
+
+.submit:hover::after {
+  transform: translateX(130%);
 }
 
 .submit:hover {
@@ -227,6 +247,18 @@
   background: linear-gradient(180deg, var(--gold-2), var(--gold));
   box-shadow: var(--shadow-gold);
   margin-bottom: 6px;
+  animation: pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .success h3 {

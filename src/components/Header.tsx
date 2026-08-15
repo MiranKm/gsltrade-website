@@ -3,11 +3,10 @@
 import { useEffect, useState } from "react";
 import { SunMark } from "./SunMark";
 import { LanguageSwitcher } from "./LanguageSwitcher";
-import { useLang } from "@/i18n/LanguageProvider";
+import type { Content, Lang } from "@/i18n/config";
 import styles from "./Header.module.css";
 
-export function Header() {
-  const { t } = useLang();
+export function Header({ t, lang }: { t: Content; lang: Lang }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -49,7 +48,7 @@ export function Header() {
         </nav>
 
         <div className={styles.actions}>
-          <LanguageSwitcher />
+          <LanguageSwitcher t={t} lang={lang} />
           <a href="#contact" className={styles.cta}>
             {t.nav.quote}
           </a>
@@ -76,7 +75,7 @@ export function Header() {
             </a>
           ))}
           <div className={styles.mobileSwitch}>
-            <LanguageSwitcher variant="block" />
+            <LanguageSwitcher t={t} lang={lang} variant="block" />
           </div>
           <a href="#contact" className={styles.mobileCta} onClick={() => setOpen(false)}>
             {t.nav.quote}

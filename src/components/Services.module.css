@@ -32,8 +32,13 @@
   gap: 20px;
 }
 
+.reveal {
+  height: 100%;
+}
+
 .card {
   position: relative;
+  height: 100%;
   padding: 30px 28px 32px;
   border-radius: var(--radius-lg);
   background: var(--paper);
@@ -61,6 +66,10 @@
 
 .card:hover::before {
   transform: scaleX(1);
+}
+
+.card:hover :global(.spotlight) {
+  opacity: 1;
 }
 
 :global(:root[dir="rtl"]) .card::before {

@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import { IconArrow } from "./icons";
-import { useLang } from "@/i18n/LanguageProvider";
+import { Reveal } from "./Reveal";
+import type { Content } from "@/i18n/config";
 import styles from "./Contact.module.css";
 
-export function Contact() {
-  const { t } = useLang();
+export function Contact({ t }: { t: Content }) {
   const c = t.contact;
   const f = c.form;
   const [sent, setSent] = useState(false);
@@ -20,7 +20,7 @@ export function Contact() {
     <section className={styles.contact} id="contact">
       <div className={styles.glow} aria-hidden />
       <div className={`container ${styles.grid}`}>
-        <div className={styles.intro}>
+        <Reveal className={styles.intro}>
           <p className={`eyebrow ${styles.eyebrow}`}>{c.eyebrow}</p>
           <h2 className={styles.heading}>
             {c.headingLine} <span className={styles.accent}>{c.headingAccent}</span>
@@ -35,9 +35,9 @@ export function Contact() {
               </div>
             ))}
           </dl>
-        </div>
+        </Reveal>
 
-        <div className={styles.card}>
+        <Reveal className={styles.card} delay={140} y={32}>
           {sent ? (
             <div className={styles.success} role="status">
               <span className={styles.tick} aria-hidden>
@@ -101,7 +101,7 @@ export function Contact() {
               <p className={styles.fineprint}>{f.fineprint}</p>
             </form>
           )}
-        </div>
+        </Reveal>
       </div>
     </section>
   );

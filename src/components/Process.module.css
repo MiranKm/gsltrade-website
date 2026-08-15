@@ -33,8 +33,16 @@
   left: 6%;
   right: 6%;
   height: 2px;
-  background: linear-gradient(90deg, var(--gold), var(--amber));
+  background: linear-gradient(90deg, var(--gold), var(--amber), var(--gold));
+  background-size: 200% 100%;
   opacity: 0.5;
+  animation: flow 5s linear infinite;
+}
+
+@keyframes flow {
+  to {
+    background-position: -200% 0;
+  }
 }
 
 .step {
@@ -56,6 +64,23 @@
   color: var(--night);
   background: linear-gradient(180deg, var(--gold-2), var(--gold));
   box-shadow: 0 8px 20px -8px rgba(255, 176, 32, 0.7), 0 0 0 6px var(--paper);
+  animation: dotGlow 3.4s ease-in-out infinite;
+}
+
+@keyframes dotGlow {
+  0%,
+  100% {
+    box-shadow:
+      0 8px 20px -8px rgba(255, 176, 32, 0.7),
+      0 0 0 6px var(--paper),
+      0 0 0 0 rgba(255, 176, 32, 0);
+  }
+  50% {
+    box-shadow:
+      0 8px 20px -8px rgba(255, 176, 32, 0.7),
+      0 0 0 6px var(--paper),
+      0 0 0 12px rgba(255, 176, 32, 0.12);
+  }
 }
 
 .stepTitle {
@@ -82,6 +107,8 @@
     right: auto;
     width: 2px;
     height: auto;
+    background-size: 100% 100%;
+    animation: none;
   }
   .step {
     display: grid;

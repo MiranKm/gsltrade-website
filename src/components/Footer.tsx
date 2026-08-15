@@ -1,11 +1,9 @@
-"use client";
-
 import { SunMark } from "./SunMark";
-import { useLang } from "@/i18n/LanguageProvider";
+import { Reveal } from "./Reveal";
+import type { Content } from "@/i18n/config";
 import styles from "./Footer.module.css";
 
-export function Footer() {
-  const { t } = useLang();
+export function Footer({ t }: { t: Content }) {
   const f = t.footer;
 
   const columns = [
@@ -15,7 +13,7 @@ export function Footer() {
 
   return (
     <footer className={styles.footer}>
-      <div className={`container ${styles.grid}`}>
+      <Reveal className={`container ${styles.grid}`}>
         <div className={styles.brandCol}>
           <a href="#top" className={styles.brand}>
             <SunMark size={30} />
@@ -37,7 +35,7 @@ export function Footer() {
             ))}
           </nav>
         ))}
-      </div>
+      </Reveal>
 
       <div className={`container ${styles.bottom}`}>
         <p>{f.rights}</p>

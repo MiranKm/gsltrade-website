@@ -1,16 +1,15 @@
-"use client";
-
 import { IconArrow } from "./icons";
-import { useLang } from "@/i18n/LanguageProvider";
+import { Counter } from "./Counter";
+import type { Content } from "@/i18n/config";
 import styles from "./Hero.module.css";
 
-export function Hero() {
-  const { t } = useLang();
+export function Hero({ t }: { t: Content }) {
   const h = t.hero;
 
   return (
     <section className={styles.hero} id="top">
       <div className={styles.sky} aria-hidden />
+      <div className={styles.aurora} aria-hidden />
       <div className={styles.stars} aria-hidden />
 
       {/* Signature: the solar generation arc — a panel's real output from
@@ -69,7 +68,9 @@ export function Hero() {
           {h.stats.map((s) => (
             <div key={s.label} className={styles.stat}>
               <dt>{s.label}</dt>
-              <dd>{s.value}</dd>
+              <dd>
+                <Counter value={s.value} />
+              </dd>
             </div>
           ))}
         </dl>

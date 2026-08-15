@@ -31,11 +31,29 @@
   gap: 20px;
 }
 
+.reveal {
+  height: 100%;
+}
+
 .card {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
   padding: 28px 26px 30px;
   border-radius: var(--radius-lg);
   background: var(--paper);
   border: 1px solid var(--line);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+  border-color: #f4d9a8;
+}
+
+.card:hover :global(.spotlight) {
+  opacity: 1;
 }
 
 .iconWrap {

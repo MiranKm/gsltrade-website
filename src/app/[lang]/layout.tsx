@@ -6,8 +6,10 @@ import {
   Noto_Kufi_Arabic,
   Noto_Sans_Arabic,
 } from "next/font/google";
-import "./globals.css";
-import { LanguageProvider } from "@/i18n/LanguageProvider";
+import "../globals.css";
+import { dirFor, type Lang } from "@/i18n/config";
+import { hasLocale } from "@/i18n/dictionaries";
+import { ScrollProgress } from "@/components/ScrollProgress";
 
 const display = Bricolage_Grotesque({
   variable: "--font-display",
@@ -64,24 +66,30 @@ export const viewport: Viewport = {
   themeColor: "#080b1a",
 };
 
-// Set dir/lang before paint so returning RTL visitors don't see a layout flip.
-const dirScript = `try{var l=localStorage.getItem('gsl-lang');if(l==='ar'||l==='ckb'){document.documentElement.dir='rtl';document.documentElement.lang=l;}else if(l){document.documentElement.lang=l;}}catch(e){}`;
+export function generateStaticParams() {
+  return [{ lang: "en" }, { lang: "ckb" }, { lang: "ar" }];
+}
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
-}: Readonly<{
+  params,
+}: {
   children: React.ReactNode;
-}>) {
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang } = await params;
+  const locale = hasLocale(lang) ? lang : "en";
+  const dir = dirFor(locale as Lang);
+
   return (
     <html
-      lang="en"
-      dir="ltr"
-      suppressHydrationWarning
+      lang={locale}
+      dir={dir}
       className={`${display.variable} ${body.variable} ${mono.variable} ${arDisplay.variable} ${arBody.variable}`}
     >
       <body>
-        <script dangerouslySetInnerHTML={{ __html: dirScript }} />
-        <LanguageProvider>{children}</LanguageProvider>
+        <ScrollProgress />
+        {children}
       </body>
     </html>
   );

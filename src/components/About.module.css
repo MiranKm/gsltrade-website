@@ -152,6 +152,21 @@
   flex: none;
 }
 
+.spark path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.panelCol[data-reveal="shown"] .spark path {
+  animation: drawSpark 1.4s ease 0.5s forwards;
+}
+
+@keyframes drawSpark {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
 @media (max-width: 860px) {
   .grid {
     grid-template-columns: 1fr;
