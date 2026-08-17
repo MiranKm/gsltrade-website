@@ -1,7 +1,10 @@
 import { SunMark } from "./SunMark";
 import { Reveal } from "./Reveal";
 import type { Content } from "@/i18n/config";
+import { brandNameParts, SITE_NAME } from "@/lib/site";
 import styles from "./Footer.module.css";
+
+const { prefix: brandPrefix, suffix: brandSuffix } = brandNameParts(SITE_NAME);
 
 export function Footer({ t }: { t: Content }) {
   const f = t.footer;
@@ -18,7 +21,7 @@ export function Footer({ t }: { t: Content }) {
           <a href="#top" className={styles.brand}>
             <SunMark size={30} />
             <span>
-              Golden Sunline <span className={styles.trade}>Trade</span>
+              {brandPrefix} <span className={styles.trade}>{brandSuffix}</span>
             </span>
           </a>
           <p className={styles.tag}>{f.tagline}</p>

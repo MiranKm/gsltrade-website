@@ -25,11 +25,14 @@ export function WhySolar({ t }: { t: Content }) {
             const Icon = icons[i] ?? IconBolt;
             return (
               <li key={c.title}>
-                <Reveal className={styles.reveal} delay={i * 70}>
+                <Reveal className={styles.reveal} delay={i * 80}>
                   <article className={styles.card}>
-                    <span className={styles.iconWrap}>
-                      <Icon size={24} />
-                    </span>
+                    <div className={styles.cardTop}>
+                      <span className={styles.iconWrap}>
+                        <Icon size={28} />
+                      </span>
+                      <span className={styles.cardIndex}>0{i + 1}</span>
+                    </div>
                     <h3 className={styles.cardTitle}>{c.title}</h3>
                     <p className={styles.cardBody}>{c.body}</p>
                     <Spotlight />

@@ -9,7 +9,10 @@
     "quote": "Get a quote",
     "menu": "Menu",
     "close": "Close",
-    "language": "Language"
+    "language": "Language",
+    "brandHome": "Golden Sunline Trade — home",
+    "primary": "Primary navigation",
+    "mobile": "Mobile navigation"
   },
   "hero": {
     "eyebrow": "Solar & storage · Erbil, Kurdistan Region",
@@ -69,6 +72,11 @@
     ],
     "panelLabel": "Generating now",
     "panelValue": "6.4 kW"
+  },
+  "gallery": {
+    "eyebrow": "Our installations",
+    "heading": "Real systems, running today.",
+    "alt": "Solar installation by Golden Sunline Trade"
   },
   "services": {
     "eyebrow": "What we do",
@@ -131,50 +139,14 @@
     "eyebrow": "Get started",
     "headingLine": "Ready to stop paying for",
     "headingAccent": "power that cuts out?",
-    "sub": "Tell us about your home or business. We'll come back within two working days with a system design and a price in IQD — no obligation.",
-    "details": [
-      {
-        "label": "Email",
-        "value": "info@goldensunline.iq",
-        "href": "mailto:info@goldensunline.iq"
-      },
-      {
-        "label": "Phone",
-        "value": "+964 750 000 0000",
-        "href": "tel:+9647500000000"
-      },
-      {
-        "label": "Office",
-        "value": "Gulan Street, Erbil, Kurdistan Region"
-      },
-      {
-        "label": "Hours",
-        "value": "Sat–Thu · 9:00–17:00"
-      }
-    ],
-    "form": {
-      "name": "Name",
-      "namePh": "Your name",
-      "email": "Email",
-      "emailPh": "you@email.com",
-      "phone": "Phone",
-      "phoneOpt": "(optional)",
-      "phonePh": "+964 …",
-      "type": "Property type",
-      "typeOptions": [
-        "Home",
-        "Business",
-        "Farm / land",
-        "Other"
-      ],
-      "message": "What do you need?",
-      "messagePh": "e.g. Keep our shop running through the outages with solar and batteries.",
-      "submit": "Request my quote",
-      "fineprint": "Demo form — nothing is stored yet. Connect it to your inbox or CRM to go live.",
-      "successTitle": "Thanks — we've got it.",
-      "successBody": "A Golden Sunline advisor will call or email within two working days.",
-      "reset": "Send another"
-    }
+    "sub": "Call or email us — we'll come back within two working days with a system design and a price in IQD, no obligation."
+  },
+  "business": {
+    "email": "info@goldensunline.iq",
+    "phone": "+964 750 000 0000",
+    "phoneTel": "+9647500000000",
+    "address": "Gulan Street, Erbil, Kurdistan Region",
+    "hours": "Sat–Thu · 9:00–17:00"
   },
   "footer": {
     "tagline": "Clean, reliable solar power for the Kurdistan Region and Iraq — imported, designed, installed, and supported.",
@@ -215,5 +187,9 @@
     "serving": "Serving: Erbil · Sulaymaniyah · Duhok · Kirkuk · Baghdad · Basra",
     "rights": "© 2026 Golden Sunline Trade. All rights reserved.",
     "built": "Built for a brighter grid."
+  },
+  "meta": {
+    "title": "Golden Sunline Trade — Solar & storage for the Kurdistan Region & Iraq",
+    "description": "Golden Sunline Trade designs, supplies, and installs solar-and-battery systems across the Kurdistan Region and Iraq — power that keeps running through the outages."
   }
 }

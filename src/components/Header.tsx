@@ -4,7 +4,10 @@ import { useEffect, useState } from "react";
 import { SunMark } from "./SunMark";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import type { Content, Lang } from "@/i18n/config";
+import { brandNameParts, SITE_NAME } from "@/lib/site";
 import styles from "./Header.module.css";
+
+const { prefix: brandPrefix, suffix: brandSuffix } = brandNameParts(SITE_NAME);
 
 export function Header({ t, lang }: { t: Content; lang: Lang }) {
   const [scrolled, setScrolled] = useState(false);
@@ -32,14 +35,14 @@ export function Header({ t, lang }: { t: Content; lang: Lang }) {
       }`}
     >
       <div className={`container ${styles.bar}`}>
-        <a href="#top" className={styles.brand} aria-label="Golden Sunline Trade — home">
+        <a href="#top" className={styles.brand} aria-label={t.nav.brandHome}>
           <SunMark size={30} />
           <span className={styles.brandText}>
-            Golden Sunline <span className={styles.brandTrade}>Trade</span>
+            {brandPrefix} <span className={styles.brandTrade}>{brandSuffix}</span>
           </span>
         </a>
 
-        <nav className={styles.nav} aria-label="Primary">
+        <nav className={styles.nav} aria-label={t.nav.primary}>
           {links.map((l) => (
             <a key={l.href} href={l.href} className={styles.link}>
               {l.label}
@@ -68,7 +71,7 @@ export function Header({ t, lang }: { t: Content; lang: Lang }) {
       </div>
 
       <div className={styles.mobilePanel} hidden={!open}>
-        <nav className={styles.mobileNav} aria-label="Mobile">
+        <nav className={styles.mobileNav} aria-label={t.nav.mobile}>
           {links.map((l) => (
             <a key={l.href} href={l.href} onClick={() => setOpen(false)}>
               {l.label}

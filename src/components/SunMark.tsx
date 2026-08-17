@@ -1,7 +1,9 @@
+import { SITE_NAME } from "@/lib/site";
+
 /* Brand mark — a sun cresting its generation arc (the "golden sunline"). */
 export function SunMark({
   size = 34,
-  title = "Golden Sunline Trade",
+  title = SITE_NAME,
 }: {
   size?: number;
   title?: string;

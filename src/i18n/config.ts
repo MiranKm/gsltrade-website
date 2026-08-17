@@ -5,10 +5,10 @@ export type Lang = "en" | "ckb" | "ar";
 
 export type Content = typeof en;
 
-export const LANGS: { code: Lang; short: string }[] = [
-  { code: "en", short: "EN" },
-  { code: "ckb", short: "کوردی" },
-  { code: "ar", short: "عربی" },
+export const LANGS: { code: Lang; name: string }[] = [
+  { code: "en", name: "English" },
+  { code: "ckb", name: "کوردی" },
+  { code: "ar", name: "العربية" },
 ];
 
 export const RTL_LANGS: Lang[] = ["ckb", "ar"];

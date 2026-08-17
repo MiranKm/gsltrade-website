@@ -1,34 +1,44 @@
 .why {
-  background: var(--paper-2);
-  padding: clamp(72px, 12vw, 130px) 0;
-  border-bottom: 1px solid var(--line);
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(90% 55% at 50% 0%, rgba(255, 176, 32, 0.1), transparent 60%),
+    linear-gradient(180deg, #0b1024 0%, #080b1a 100%);
+  padding: clamp(96px, 14vw, 160px) 0;
+  border-top: 1px solid var(--line-dark);
+  border-bottom: 1px solid var(--line-dark);
 }
 
 .head {
-  max-width: 640px;
-  margin-bottom: clamp(40px, 6vw, 60px);
+  max-width: 720px;
+  margin-bottom: clamp(48px, 7vw, 80px);
 }
 
 .eyebrow {
-  color: var(--amber);
-  margin-bottom: 16px;
+  color: var(--gold-2);
+  margin-bottom: 20px;
 }
 
 .heading {
-  font-size: clamp(1.9rem, 4vw, 3rem);
-  margin-bottom: 18px;
+  color: #fff;
+  font-size: clamp(2.2rem, 4.8vw, 3.6rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
 }
 
 .sub {
-  color: var(--muted);
-  font-size: 1.08rem;
+  color: var(--on-dark-muted);
+  font-size: 1.12rem;
+  max-width: 56ch;
 }
 
 .grid {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  gap: 16px;
 }
 
 .reveal {
@@ -39,43 +49,76 @@
   position: relative;
   overflow: hidden;
   height: 100%;
-  padding: 28px 26px 30px;
+  padding: 30px 26px 32px;
   border-radius: var(--radius-lg);
-  background: var(--paper);
-  border: 1px solid var(--line);
-  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
+  box-shadow: 0 24px 48px -32px rgba(0, 0, 0, 0.7);
+  transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1),
+    background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--amber));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow);
-  border-color: #f4d9a8;
+  transform: translateY(-6px);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04));
+  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.8);
+}
+
+.card:hover::before {
+  transform: scaleX(1);
 }
 
 .card:hover :global(.spotlight) {
   opacity: 1;
 }
 
+:global(:root[dir="rtl"]) .card::before {
+  transform-origin: right;
+}
+
+.cardTop {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
 .iconWrap {
-  display: inline-grid;
-  place-items: center;
-  width: 50px;
-  height: 50px;
-  border-radius: 14px;
-  color: var(--night);
-  background: linear-gradient(180deg, var(--gold-2), var(--gold));
-  box-shadow: 0 10px 22px -12px rgba(255, 176, 32, 0.9);
-  margin-bottom: 20px;
+  display: inline-flex;
+  color: var(--gold-2);
+}
+
+.cardIndex {
+  font-family: var(--ff-mono);
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  color: rgba(255, 204, 85, 0.5);
+}
+
+:global(:root[dir="rtl"]) .cardIndex {
+  letter-spacing: normal;
 }
 
 .cardTitle {
-  font-size: 1.18rem;
-  margin-bottom: 10px;
+  color: #fff;
+  font-size: 1.24rem;
+  margin-bottom: 12px;
 }
 
 .cardBody {
-  color: var(--muted);
-  font-size: 0.96rem;
+  color: var(--on-dark-muted);
+  font-size: 0.97rem;
 }
 
 @media (max-width: 900px) {

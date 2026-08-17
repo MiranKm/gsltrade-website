@@ -1,45 +1,97 @@
-.switch {
+.root {
+  position: relative;
+}
+
+.trigger {
   display: inline-flex;
   align-items: center;
-  gap: 2px;
-  padding: 3px;
-  border-radius: 999px;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: var(--radius-btn);
   background: rgba(255, 255, 255, 0.06);
-  border: 1px solid var(--line-dark);
-}
-
-.opt {
-  padding: 6px 11px;
-  border: none;
-  background: transparent;
-  border-radius: 999px;
-  cursor: pointer;
-  font-size: 0.8rem;
+  color: var(--on-dark);
   font-weight: 600;
-  line-height: 1;
-  color: var(--on-dark-muted);
-  transition: color 0.18s ease, background 0.18s ease;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
 }
 
-.opt:hover {
+.trigger:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.trigger:active {
+  transform: scale(0.97);
+}
+
+.triggerLabel {
+  line-height: 1;
+}
+
+.chevron,
+.chevronOpen {
+  transition: transform 0.25s cubic-bezier(0.32, 0.72, 0, 1);
+  color: var(--on-dark-muted);
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  inset-inline-end: 0;
+  min-width: 190px;
+  padding: 6px;
+  border-radius: var(--radius);
+  background: #0d1330;
+  box-shadow: 0 28px 60px -22px rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: opacity 0.2s ease, transform 0.28s cubic-bezier(0.32, 0.72, 0, 1),
+    visibility 0.2s;
+}
+
+.menu.open {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--on-dark-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.item:hover {
+  background: rgba(255, 255, 255, 0.07);
   color: var(--on-dark);
 }
 
 .active {
-  color: var(--night);
-  background: linear-gradient(180deg, var(--gold-2), var(--gold));
+  color: var(--gold-2);
+  font-weight: 600;
 }
 
-/* block variant — used inside the mobile menu */
-.block {
-  display: flex;
+/* full-width variant — used inside the mobile menu */
+.block .trigger {
   width: 100%;
-  justify-content: stretch;
+  justify-content: space-between;
 }
 
-.block .opt {
-  flex: 1;
-  padding: 12px 0;
-  text-align: center;
-  font-size: 0.95rem;
+.block .menu {
+  inset-inline-start: 0;
 }

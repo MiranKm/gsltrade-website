@@ -160,7 +160,8 @@
 
 .title {
   font-size: clamp(2.2rem, 6.4vw, 4.6rem);
-  font-weight: 800;
+  font-weight: 700;
+  letter-spacing: -0.03em;
   color: #fff;
   max-width: 16ch;
   animation: up 0.8s ease 0.12s both;
@@ -195,10 +196,11 @@
   overflow: hidden;
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  padding: 15px 26px;
-  border-radius: 999px;
+  gap: 10px;
+  padding: 15px 28px;
+  border-radius: var(--radius-btn);
   font-weight: 600;
+  letter-spacing: 0.01em;
   color: var(--night);
   background: linear-gradient(180deg, var(--gold-2), var(--gold));
   box-shadow: var(--shadow-gold);
@@ -229,6 +231,10 @@
   box-shadow: 0 22px 54px -16px rgba(255, 176, 32, 0.7);
 }
 
+.primary:active {
+  transform: scale(0.98);
+}
+
 .primary svg {
   transition: transform 0.18s ease;
 }
@@ -249,17 +255,16 @@
   display: inline-flex;
   align-items: center;
   padding: 15px 26px;
-  border-radius: 999px;
+  border-radius: var(--radius-btn);
   font-weight: 600;
+  letter-spacing: 0.01em;
   color: var(--on-dark);
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--line-dark);
-  transition: background 0.2s ease, border-color 0.2s ease;
+  transition: background 0.2s ease;
 }
 
 .secondary:hover {
   background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.28);
 }
 
 .ticker {
@@ -269,8 +274,8 @@
   margin-top: 56px;
   padding: 18px 26px;
   border-radius: var(--radius);
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--line-dark);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 20px 40px -30px rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(6px);
   animation: up 0.8s ease 0.44s both;
 }

@@ -3,6 +3,7 @@ import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { WhySolar } from "@/components/WhySolar";
 import { About } from "@/components/About";
+import { Gallery } from "@/components/Gallery";
 import { Services } from "@/components/Services";
 import { Process } from "@/components/Process";
 import { Contact } from "@/components/Contact";
@@ -26,6 +27,7 @@ export default async function Home({
         <Hero t={t} />
         <WhySolar t={t} />
         <About t={t} />
+        <Gallery t={t} />
         <Services t={t} />
         <Process t={t} />
         <Contact t={t} />
