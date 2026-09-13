@@ -10,7 +10,7 @@
     "menu": "Menu",
     "close": "Close",
     "language": "Language",
-    "brandHome": "Golden Sunline Trade — home",
+    "brandHome": "GSL Trade — home",
     "primary": "Primary navigation",
     "mobile": "Mobile navigation"
   },
@@ -142,10 +142,10 @@
     "sub": "Call or email us — we'll come back within two working days with a system design and a price in IQD, no obligation."
   },
   "business": {
-    "email": "info@goldensunline.iq",
-    "phone": "+964 750 000 0000",
-    "phoneTel": "+9647500000000",
-    "address": "Gulan Street, Erbil, Kurdistan Region",
+    "email": "samir@gsltrade.com",
+    "phone": "(+964) 7710007474",
+    "phone2": "(+964) 7502211817",
+    "address": "100m Street opposite to Baghdad terminal , Erbil, Kurdistan Region",
     "hours": "Sat–Thu · 9:00–17:00"
   },
   "footer": {

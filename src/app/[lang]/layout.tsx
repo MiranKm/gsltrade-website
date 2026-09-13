@@ -65,7 +65,7 @@ function buildJsonLd(business: Content["business"]) {
         name: SITE_NAME,
         url: SITE_URL,
         email: business.email,
-        telephone: business.phoneTel,
+        telephone: [business.phone, business.phone2].map((p) => p.replace(/[^\d+]/g, "")),
         address: business.address,
         areaServed: ["Erbil", "Sulaymaniyah", "Duhok", "Kirkuk", "Baghdad", "Basra"],
         image: `${SITE_URL}/images/solar_1.jpeg`,

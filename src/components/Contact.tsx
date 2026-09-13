@@ -39,6 +39,11 @@ function PhoneIcon() {
   );
 }
 
+// "(+964) 7710007474" -> "+9647710007474" for tel: links.
+function telHref(phone: string) {
+  return `tel:${phone.replace(/[^\d+]/g, "")}`;
+}
+
 export function Contact({ t }: { t: Content }) {
   const c = t.contact;
   const b = t.business;
@@ -59,12 +64,14 @@ export function Contact({ t }: { t: Content }) {
           <div className={styles.contacts}>
             <a href={`mailto:${b.email}`} className={styles.contactLink}>
               <MailIcon />
-              <span>{b.email}</span>
+              <span dir="ltr">{b.email}</span>
             </a>
-            <a href={`tel:${b.phoneTel}`} className={styles.contactLink}>
-              <PhoneIcon />
-              <span>{b.phone}</span>
-            </a>
+            {[b.phone, b.phone2].map((phone) => (
+              <a key={phone} href={telHref(phone)} className={styles.contactLink}>
+                <PhoneIcon />
+                <span dir="ltr">{phone}</span>
+              </a>
+            ))}
           </div>
         </Reveal>
       </div>
