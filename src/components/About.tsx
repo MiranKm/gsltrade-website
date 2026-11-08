@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { Reveal } from "./Reveal";
 import { Counter } from "./Counter";
+import { Spotlight } from "./Spotlight";
+import { IconEye, IconTarget } from "./icons";
 import type { Content } from "@/i18n/config";
 import styles from "./About.module.css";
 
@@ -12,10 +14,18 @@ export function About({ t }: { t: Content }) {
       <div className={`container ${styles.grid}`}>
         <Reveal className={styles.copy}>
           <p className={`eyebrow ${styles.eyebrow}`}>{a.eyebrow}</p>
-          <h2 className={styles.heading}>{a.heading}</h2>
-          <p className={styles.body}>{a.body1}</p>
-          <p className={styles.body}>{a.body2}</p>
+          <h2 className={styles.heading}>
+            {a.heading}
+            <span className={styles.headingSub}>{a.headingSub}</span>
+          </h2>
 
+          {a.body.map((p) => (
+            <p key={p} className={styles.body}>
+              {p}
+            </p>
+          ))}
+
+          <p className={styles.listIntro}>{a.suppliesIntro}</p>
           <ul className={styles.list}>
             {a.highlights.map((h) => (
               <li key={h}>
@@ -34,6 +44,12 @@ export function About({ t }: { t: Content }) {
               </li>
             ))}
           </ul>
+
+          {a.bodyAfter.map((p) => (
+            <p key={p} className={styles.body}>
+              {p}
+            </p>
+          ))}
         </Reveal>
 
         {/* A real installation behind the live-yield readout */}
@@ -50,7 +66,7 @@ export function About({ t }: { t: Content }) {
               <div className={styles.readout}>
                 <div>
                   <span className={styles.readLabel}>{a.panelLabel}</span>
-                  <span className={styles.readValue}>
+                  <span className={styles.readValue} dir="ltr">
                     <Counter value={a.panelValue} duration={1800} />
                   </span>
                 </div>
@@ -75,6 +91,47 @@ export function About({ t }: { t: Content }) {
               </div>
             </div>
           </div>
+        </Reveal>
+      </div>
+
+      {/* Mission · Vision · Core values */}
+      <div className={`container ${styles.pillars}`}>
+        <Reveal className={styles.mission}>
+          <article className={styles.pillar}>
+            <span className={styles.pillarIcon}>
+              <IconTarget size={26} />
+            </span>
+            <h3 className={styles.pillarTitle}>{a.missionTitle}</h3>
+            <p className={styles.pillarBody}>{a.mission}</p>
+            <Spotlight />
+          </article>
+        </Reveal>
+
+        <Reveal className={styles.vision} delay={90}>
+          <article className={styles.pillar}>
+            <span className={styles.pillarIcon}>
+              <IconEye size={26} />
+            </span>
+            <h3 className={styles.pillarTitle}>{a.visionTitle}</h3>
+            <p className={styles.pillarBody}>{a.vision}</p>
+            <Spotlight />
+          </article>
+        </Reveal>
+
+        <Reveal className={styles.valuesCol} delay={180}>
+          <article className={styles.values}>
+            <h3 className={styles.valuesTitle}>{a.valuesTitle}</h3>
+            <ol className={styles.valuesList}>
+              {a.values.map((v, i) => (
+                <li key={v}>
+                  <span className={styles.valueIndex} aria-hidden>
+                    0{i + 1}
+                  </span>
+                  {v}
+                </li>
+              ))}
+            </ol>
+          </article>
         </Reveal>
       </div>
     </section>

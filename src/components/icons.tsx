@@ -116,3 +116,22 @@ export function IconShield({ size = 24 }: IconProps) {
     </svg>
   );
 }
+
+export function IconTarget({ size = 24 }: IconProps) {
+  return (
+    <svg {...base(size)}>
+      <circle cx="12" cy="12" r="8.5" />
+      <circle cx="12" cy="12" r="4.5" />
+      <circle cx="12" cy="12" r="0.8" fill="currentColor" />
+    </svg>
+  );
+}
+
+export function IconEye({ size = 24 }: IconProps) {
+  return (
+    <svg {...base(size)}>
+      <path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z" />
+      <circle cx="12" cy="12" r="3" />
+    </svg>
+  );
+}

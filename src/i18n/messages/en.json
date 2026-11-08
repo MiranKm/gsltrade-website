@@ -60,15 +60,37 @@
     ]
   },
   "about": {
-    "eyebrow": "Who we are",
-    "heading": "An Erbil company, powering all of Iraq.",
-    "body1": "Golden Sunline Trade began by importing tier-1 solar hardware into the Kurdistan Region, and grew into a full-service installer. Today we design, supply, and fit complete solar-and-battery systems — then stay on to keep them producing.",
-    "body2": "From a single home in Erbil to factories and farms across Iraq, we build systems tuned to the local grid, the local sun, and your bill — because here, every kilowatt-hour you make yourself is one you don't buy twice.",
+    "eyebrow": "About us",
+    "heading": "Khat Al Shams Al Thahabi",
+    "headingSub": "Golden Sunline Company",
+    "body": [
+      "Khat Al Shams Al Thahabi (Golden Sunline Company) is a leading provider of solar energy solutions headquartered in Erbil, Iraq. We are dedicated to delivering reliable, efficient, and sustainable renewable energy systems for residential, commercial, industrial, and government projects across Iraq.",
+      "Since our establishment, we have focused on helping our customers reduce energy costs and achieve greater energy independence through high-quality solar technologies."
+    ],
+    "suppliesIntro": "We supply complete solar solutions from globally recognized manufacturers, including:",
     "highlights": [
-      "Tier-1 panels, inverters & batteries",
-      "In-house engineering and design",
-      "Certified, insured installation crews",
-      "Local support and maintenance"
+      "Photovoltaic (PV) panels",
+      "Hybrid and on-grid inverters",
+      "Lithium battery energy storage systems",
+      "Mounting structures",
+      "All related accessories"
+    ],
+    "bodyAfter": [
+      "Our experienced team provides comprehensive services, from system design and engineering to installation, commissioning, and after-sales technical support. Every project is designed to meet the highest standards of quality, safety, and performance, ensuring long-term value for our clients.",
+      "At Golden Sunline Company, we believe that renewable energy is the key to a cleaner and more sustainable future. By combining innovative technology with professional expertise, we are committed to supporting Iraq's transition toward clean energy while delivering dependable power solutions tailored to our customers' needs."
+    ],
+    "missionTitle": "Our Mission",
+    "mission": "To provide innovative, cost-effective, and reliable solar energy solutions that empower our customers with clean and sustainable electricity.",
+    "visionTitle": "Our Vision",
+    "vision": "To become one of Iraq's most trusted and respected renewable energy companies by delivering world-class products, exceptional service, and sustainable energy solutions.",
+    "valuesTitle": "Our Core Values",
+    "values": [
+      "Quality and Reliability",
+      "Customer Satisfaction",
+      "Innovation and Technology",
+      "Integrity and Professionalism",
+      "Sustainability and Environmental Responsibility",
+      "Safety and Continuous Improvement"
     ],
     "panelLabel": "Generating now",
     "panelValue": "6.4 kW"
