@@ -226,8 +226,8 @@ section[id] {
 /* ===== Right-to-left (Kurdish / Arabic) ===== */
 :root[dir="rtl"] {
   /* Arabic-script faces cover both Kurdish (Sorani) and Arabic. */
-  --ff-display: var(--font-ar-display), var(--font-ar-body), "Segoe UI", sans-serif;
-  --ff-body: var(--font-ar-body), var(--font-ar-display), "Segoe UI", sans-serif;
+  --ff-display: var(--font-ar-display), var(--font-ar-body), var(--font-display), "Segoe UI", sans-serif;
+  --ff-body: var(--font-ar-body), var(--font-ar-display), var(--font-body), "Segoe UI", sans-serif;
   --ff-mono: var(--font-ar-body), var(--font-mono), monospace;
 }
 

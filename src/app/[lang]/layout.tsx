@@ -1,50 +1,49 @@
 import type { Metadata, Viewport } from "next";
-import {
-  IBM_Plex_Mono,
-  Inter,
-  Noto_Kufi_Arabic,
-  Noto_Sans_Arabic,
-  Space_Grotesk,
-} from "next/font/google";
+import localFont from "next/font/local";
 import "../globals.css";
 import { dirFor, type Content, type Lang } from "@/i18n/config";
 import { getDictionary, hasLocale } from "@/i18n/dictionaries";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 
-const display = Space_Grotesk({
+// Fonts are self-hosted (src/fonts) rather than loaded via next/font/google,
+// so builds never depend on fetching from Google Fonts at build time.
+const display = localFont({
+  src: "../../fonts/space-grotesk-latin-var.woff2",
   variable: "--font-display",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: "400 700",
   display: "swap",
 });
 
-const body = Inter({
+const body = localFont({
+  src: "../../fonts/inter-latin-var.woff2",
   variable: "--font-body",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: "400 700",
   display: "swap",
 });
 
-const mono = IBM_Plex_Mono({
+const mono = localFont({
+  src: [
+    { path: "../../fonts/ibm-plex-mono-latin-400.woff2", weight: "400" },
+    { path: "../../fonts/ibm-plex-mono-latin-500.woff2", weight: "500" },
+    { path: "../../fonts/ibm-plex-mono-latin-600.woff2", weight: "600" },
+  ],
   variable: "--font-mono",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
   display: "swap",
 });
 
 // Arabic-script faces cover both Arabic and Kurdish (Sorani).
-const arDisplay = Noto_Kufi_Arabic({
+const arDisplay = localFont({
+  src: "../../fonts/noto-kufi-arabic-var.woff2",
   variable: "--font-ar-display",
-  subsets: ["arabic"],
-  weight: ["400", "600", "700"],
+  weight: "400 700",
   display: "swap",
 });
 
-const arBody = Noto_Sans_Arabic({
+const arBody = localFont({
+  src: "../../fonts/noto-sans-arabic-var.woff2",
   variable: "--font-ar-body",
-  subsets: ["arabic"],
-  weight: ["400", "500", "600", "700"],
+  weight: "400 700",
   display: "swap",
 });
 
